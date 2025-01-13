@@ -1,7 +1,7 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router"; // Impor router yang telah Anda buat
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Menyediakan router ke aplikasi */}

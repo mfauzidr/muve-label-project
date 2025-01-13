@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Logo from "../assets/svg/logo-muve.svg";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null); // Ref untuk dropdown
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
@@ -13,6 +14,23 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  // Menutup dropdown jika klik di luar
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false); // Tutup dropdown
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="bg-white text-black p-4 shadow-md">
@@ -53,12 +71,12 @@ const Navbar = () => {
           <Link to="/" className="hover:text-gray-400">
             Home
           </Link>
-          <Link to="#" className="hover:text-gray-400">
+          <Link to="/about-us" className="hover:text-gray-400">
             About Us
           </Link>
 
           {/* Dropdown Menu */}
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
               onClick={toggleDropdown}
               className="hover:text-gray-400 focus:outline-none"
@@ -68,7 +86,7 @@ const Navbar = () => {
 
             {/* Dropdown Items */}
             <div
-              className={`absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-10 overflow-hidden transition-all duration-300 ${
+              className={`absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-20 overflow-hidden transition-all duration-300 ${
                 isDropdownOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >

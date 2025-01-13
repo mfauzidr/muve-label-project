@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className=" text-white pt-8 pb-4">
+    <footer className=" text-black bg-white pt-8 pb-4">
       {/* Empat Kolom */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
         {/* Kolom 1: Tentang Muve Label */}
@@ -13,10 +13,7 @@ const Footer = () => {
             idol group, dance cover, dan event organizer bertema budaya Jepang
             dan Korea untuk para penggemar pop culture.
           </p>
-          <Link
-            to="/about-us"
-            className="text-sm text-gray-400 hover:underline"
-          >
+          <Link to="/about-us" className="text-sm text-black hover:underline">
             Learn More →
           </Link>
         </div>
@@ -107,7 +104,7 @@ const Footer = () => {
               href="https://wa.me/123456789"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:underline"
+              className="text-green-600 hover:underline"
             >
               +123456789
             </a>

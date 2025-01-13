@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import HeroImage from "../assets/img/hero-banner.webp";
 
-const HeroBanner = () => {
+const HeroBanner: React.FC = () => {
   return (
     <div
       className="relative bg-cover bg-center h-auto w-full md:h-1/2 lg:h-screen text-sans"

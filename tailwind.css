@@ -10,3 +10,23 @@
     font-family: "Plus Jakarta Sans", sans-serif;
   }
 }
+
+/* styles.css */
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 500ms, transform 500ms;
+}
