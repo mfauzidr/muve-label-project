@@ -1,5 +1,5 @@
 import React from "react";
-import OrgChart from "../../components/OrgChart";
+import OrgChart from "../components/OrgChart";
 
 const About: React.FC = () => {
   return (
